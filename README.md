@@ -1,7 +1,8 @@
 ERocksDB
 =============
 
-Erlang nif experiment.
+Facebook Rocksdb (https://github.com/facebook/rocksdb
+) Erlang api. Erlang NIF experiment, only built on MacOS, should not be used in production.
 
 
 ### Play it

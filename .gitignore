@@ -1,0 +1,8 @@
+.rebar/*
+ebin/*
+priv/*
+c_src/rocksdb/*
+log/*
+deps/*
+erl_crash.dump
+db*

@@ -1,0 +1,12 @@
+{application, erocksdb,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { erocksdb_app, []}},
+  {env, []}
+ ]}.

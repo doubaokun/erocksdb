@@ -31,8 +31,8 @@ del(Key) ->
 
 test() ->
 	
-	for(1, 100, fun() -> spawn( fun() -> writen(1000000) end) end ),
-  Pid = spawn(?MODULE, loop, [100]),
+	for(1, 1000, fun() -> spawn( fun() -> writen(100000) end) end ),
+  Pid = spawn(?MODULE, loop, [1000]),
   register(erocksdb_test, Pid).
 
 loop(0) ->

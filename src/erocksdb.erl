@@ -47,7 +47,6 @@ loop(N) ->
 writen(0) ->
 	erocksdb_test ! {self(), done};
 writen(N) ->
-	erlang:bump_reductions(1000),
 	erocksdb:put("a" ++ integer_to_list(N), integer_to_list(N)),
 	writen(N-1).
 

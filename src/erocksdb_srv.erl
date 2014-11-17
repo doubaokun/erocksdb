@@ -28,16 +28,20 @@ stop() ->
 init(State) ->
   rocksdb:init(),
   rocksdb:open("./db"),
+  erlang:bump_reductions(2000),
   {ok, init}.
 
 handle_call({get, Key}, _From, State) ->
   Value = rocksdb:get(Key),
+  erlang:bump_reductions(2000),
   {reply, Value, get};
 handle_call({put, Key, Value}, _From, State) ->
   rocksdb:put(Key, Value),
+  erlang:bump_reductions(2000),
   {reply, ok, State};
 handle_call({del, Key}, _From, State) ->
   rocksdb:del(Key),
+  erlang:bump_reductions(2000),
   {reply, ok, State}.
 
 handle_cast(Req, State) ->

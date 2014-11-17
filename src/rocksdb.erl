@@ -4,8 +4,8 @@
 
 test() ->
 	rocksdb:init(),
-	erlang:bump_reductions(5000),
 	rocksdb:open("./db1"),
+	erlang:bump_reductions(2000),
 	rocksdb:put("a", "b"),
 	rocksdb:get("a"),
 	register(erocksdb_test, self()),
@@ -25,7 +25,7 @@ loop(N) ->
 writen(0) ->
 	erocksdb_test ! {self(), done};
 writen(N) ->
-	erlang:bump_reductions(1000),
+	erlang:bump_reductions(2000),
 	rocksdb:put("a" ++ integer_to_list(N), integer_to_list(N)),
 	writen(N-1).
 

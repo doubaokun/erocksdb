@@ -1,1 +1,1 @@
-erl -pa ebin -pa deps/*/ebin -pa priv -s erocksdb
+erl -pa ebin -pa priv -s erocksdb

@@ -1,7 +1,7 @@
 -module(erocksdb).
 
 -export([start/0, stop/0]).
--export([put/2, get/1, del/1, test/0]).
+-export([put/2, get/1, del/1, test/0, loop/1]).
 
 -define(SERVER, erocksdb_srv).
 
@@ -30,10 +30,10 @@ del(Key) ->
 
 
 test() ->
-	start(),
-	register(erocksdb_test, self()),
-	for(1, 100, fun() -> spawn( fun() -> writen(10000) end) end ),
-	loop(100).
+	
+	for(1, 100, fun() -> spawn( fun() -> writen(1000000) end) end ),
+  Pid = spawn(?MODULE, loop, [100]),
+  register(erocksdb_test, Pid).
 
 loop(0) ->
 	io:format("All done~n");
